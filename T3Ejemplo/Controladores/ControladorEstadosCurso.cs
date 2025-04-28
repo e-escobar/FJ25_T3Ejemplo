@@ -1,45 +1,38 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace T3Ejemplo.Controladores
 {
-    internal class ControladorPersona
+    internal class ControladorEstadosCurso
     {
-        public void consultaInstructores(ComboBox cbInstructores)
+        public void consultaEstadosCurso(ComboBox cbEstadosCurso)
         {
             Conexion.Conexion conexion = new Conexion.Conexion();
-            Modelos.ModeloPersonas objetoInstructores = new Modelos.ModeloPersonas();
+            Modelos.ModeloEstadosCursos objetoEstadosCurso = new Modelos.ModeloEstadosCursos();
             DataTable dtModelo = new DataTable();
-
             dtModelo.Columns.Add("Id", typeof(int));
             dtModelo.Columns.Add("Nombre", typeof(string));
-
-            string sql = @"SELECT id, nombre FROM personas WHERE id_rol = 2;";
-
+            string sql = @"SELECT * FROM estados_curso";
+            DataTable dt = dtModelo;
             try
             {
                 MySqlConnection sqlConexion = conexion.establecerConexion();
                 MySqlCommand comando = new MySqlCommand(sql, sqlConexion);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-
                 DataSet ds = new DataSet();
                 adaptador.Fill(ds);
-                DataTable dtInstructores = ds.Tables[0];
-
-                foreach (DataRow row in dtInstructores.Rows)
+                DataTable dtCategorias = ds.Tables[0];
+                foreach (DataRow row in dtCategorias.Rows)
                 {
-                    objetoInstructores.Id = Convert.ToInt32(row["Id"]);
-                    objetoInstructores.Nombre = row["Nombre"].ToString();
-                    dtModelo.Rows.Add(objetoInstructores.Id, objetoInstructores.Nombre);
+                    objetoEstadosCurso.Id = Convert.ToInt32(row["Id"]);
+                    objetoEstadosCurso.Nombre = row["Nombre"].ToString();
+                    dtModelo.Rows.Add(objetoEstadosCurso.Id, objetoEstadosCurso.Nombre);
                 }
             }
             catch (Exception e)
@@ -50,11 +43,9 @@ namespace T3Ejemplo.Controladores
             {
                 conexion.cerrarConexion();
             }
-
-            cbInstructores.DataSource = dtModelo;
-            cbInstructores.ValueMember = "Id";
-            cbInstructores.DisplayMember = "Nombre";
+            cbEstadosCurso.DataSource = dtModelo;
+            cbEstadosCurso.ValueMember = "Id";
+            cbEstadosCurso.DisplayMember = "Nombre";
         }
-
     }
 }

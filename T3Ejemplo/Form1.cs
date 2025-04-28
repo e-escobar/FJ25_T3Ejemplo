@@ -23,9 +23,39 @@ namespace T3Ejemplo
 
         private void administrarCursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCursos formCursos = new FormCursos();
-            formCursos.MdiParent = this;
-            formCursos.Show();
+            // Buscar si ya existe una instancia abierta del formulario
+            FormCursos formAbierto = this.MdiChildren.OfType<FormCursos>().FirstOrDefault();
+
+            if (formAbierto != null)
+            {
+                formAbierto.WindowState = FormWindowState.Normal;
+                formAbierto.BringToFront();
+                formAbierto.Focus();
+            }
+            else
+            {
+                FormCursos formCursos = new FormCursos();
+                formCursos.MdiParent = this;
+                formCursos.Show();
+            }
+        }
+
+        private void administrarPersonasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPersonas formAbierto = this.MdiChildren.OfType<FormPersonas>().FirstOrDefault();
+
+            if (formAbierto != null)
+            {
+                formAbierto.WindowState = FormWindowState.Normal;
+                formAbierto.BringToFront();
+                formAbierto.Focus();
+            }
+            else
+            {
+                FormPersonas formPersonas = new FormPersonas();
+                formPersonas.MdiParent = this;
+                formPersonas.Show();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace T3Ejemplo.Modelos
 {
-    internal class ModeloCursos
+    public class ModeloCursos
     {
         int id;
         string titulo;

@@ -24,7 +24,7 @@ namespace T3Ejemplo.Conexion
             try {
                 conectar = new MySqlConnection(cadenaConexion);
                 conectar.Open();
-                MessageBox.Show("Conexión exitosa a la base de datos");
+                //MessageBox.Show("Conexión exitosa a la base de datos");
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace T3Ejemplo.Conexion
                 if (conectar != null && conectar.State == System.Data.ConnectionState.Open)
                 {
                     conectar.Close();
-                    MessageBox.Show("Conexión cerrada");
+                    //MessageBox.Show("Conexión cerrada");
                 }
             }
             catch (Exception ex)

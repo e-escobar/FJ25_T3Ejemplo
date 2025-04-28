@@ -1,10 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,49 +9,46 @@ using System.Windows.Forms;
 
 namespace T3Ejemplo.Controladores
 {
-    internal class ControladorPersona
+    internal class ControladorRol
     {
-        public void consultaInstructores(ComboBox cbInstructores)
+        public void consultaRoles(ComboBox cbRol)
         {
             Conexion.Conexion conexion = new Conexion.Conexion();
-            Modelos.ModeloPersonas objetoInstructores = new Modelos.ModeloPersonas();
+            Modelos.ModeloRoles objetoRol = new Modelos.ModeloRoles();
             DataTable dtModelo = new DataTable();
-
             dtModelo.Columns.Add("Id", typeof(int));
             dtModelo.Columns.Add("Nombre", typeof(string));
-
-            string sql = @"SELECT id, nombre FROM personas WHERE id_rol = 2;";
-
+            string sql = @"SELECT id, nombre FROM roles;";
             try
             {
                 MySqlConnection sqlConexion = conexion.establecerConexion();
                 MySqlCommand comando = new MySqlCommand(sql, sqlConexion);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-
                 DataSet ds = new DataSet();
                 adaptador.Fill(ds);
-                DataTable dtInstructores = ds.Tables[0];
-
-                foreach (DataRow row in dtInstructores.Rows)
+                DataTable dtRoles = ds.Tables[0];
+                foreach (DataRow row in dtRoles.Rows)
                 {
-                    objetoInstructores.Id = Convert.ToInt32(row["Id"]);
-                    objetoInstructores.Nombre = row["Nombre"].ToString();
-                    dtModelo.Rows.Add(objetoInstructores.Id, objetoInstructores.Nombre);
+                    objetoRol.Id = Convert.ToInt32(row["Id"]);
+                    objetoRol.Nombre = row["Nombre"].ToString();
+                    dtModelo.Rows.Add(objetoRol.Id, objetoRol.Nombre);
                 }
+
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error al consultar las categorias: " + e.Message);
+                MessageBox.Show("Error al consultar los roles: " + e.Message);
             }
             finally
             {
                 conexion.cerrarConexion();
             }
 
-            cbInstructores.DataSource = dtModelo;
-            cbInstructores.ValueMember = "Id";
-            cbInstructores.DisplayMember = "Nombre";
-        }
+            cbRol.DataSource = dtModelo;
+            cbRol.ValueMember = "Id";
+            cbRol.DisplayMember = "Nombre";
 
+
+        }
     }
 }
