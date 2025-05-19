@@ -57,5 +57,41 @@ namespace T3Ejemplo
                 formPersonas.Show();
             }
         }
+
+        private void inscritosPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReportes formAbierto = this.MdiChildren.OfType<FormReportes>().FirstOrDefault();
+
+            if (formAbierto != null)
+            {
+                formAbierto.WindowState = FormWindowState.Normal;
+                formAbierto.BringToFront();
+                formAbierto.Focus();
+            }
+            else
+            {
+                FormReportes formReportes = new FormReportes("inscritos");
+                formReportes.MdiParent = this;
+                formReportes.Show();
+            }
+        }
+
+        private void personasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormReportes formAbierto = this.MdiChildren.OfType<FormReportes>().FirstOrDefault();
+
+            if (formAbierto != null)
+            {
+                formAbierto.WindowState = FormWindowState.Normal;
+                formAbierto.BringToFront();
+                formAbierto.Focus();
+            }
+            else
+            {
+                FormReportes formReportes = new FormReportes("personas");
+                formReportes.MdiParent = this;
+                formReportes.Show();
+            }
+        }
     }
 }

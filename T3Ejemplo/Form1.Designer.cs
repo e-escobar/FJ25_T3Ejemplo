@@ -34,8 +34,10 @@
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarPersonasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscritosPorCursoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,10 +90,20 @@
             // 
             // reportesToolStripMenuItem
             // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inscritosPorCursoToolStripMenuItem,
+            this.personasToolStripMenuItem1});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // inscritosPorCursoToolStripMenuItem
+            // 
+            this.inscritosPorCursoToolStripMenuItem.Name = "inscritosPorCursoToolStripMenuItem";
+            this.inscritosPorCursoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.inscritosPorCursoToolStripMenuItem.Text = "Inscritos por Curso";
+            this.inscritosPorCursoToolStripMenuItem.Click += new System.EventHandler(this.inscritosPorCursoToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -104,6 +116,13 @@
             this.administrarCuentaToolStripMenuItem.Name = "administrarCuentaToolStripMenuItem";
             this.administrarCuentaToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.administrarCuentaToolStripMenuItem.Text = "Administrar Cuenta";
+            // 
+            // personasToolStripMenuItem1
+            // 
+            this.personasToolStripMenuItem1.Name = "personasToolStripMenuItem1";
+            this.personasToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.personasToolStripMenuItem1.Text = "Personas por Rol";
+            this.personasToolStripMenuItem1.Click += new System.EventHandler(this.personasToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -133,6 +152,8 @@
         private System.Windows.Forms.ToolStripMenuItem administrarCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarPersonasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscritosPorCursoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem1;
     }
 }
 
